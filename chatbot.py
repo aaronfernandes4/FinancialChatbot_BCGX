@@ -1,7 +1,8 @@
+
 import pandas as pd
 
 # Load and prepare data
-df = pd.read_csv('10K.csv')
+df = pd.read_csv('10K_Processed.csv')
 df = df.sort_values(by=['Company', 'Year'])
 df['Revenue Growth (%)'] = df.groupby('Company')['Total Revenue'].pct_change() * 100
 df['Net Income Growth (%)'] = df.groupby('Company')['Net Income'].pct_change() * 100
@@ -70,7 +71,7 @@ def financial_chatbot(query):
 
 # Main chatbot loop
 if __name__ == "__main__":
-    print("Welcome to Global Finance Corps Financial Chatbot Prototype!")
+    print("Welcome to the Financial Chatbot Prototype!")
     name = input("Hi there! What’s your name? ")
     print(f"\nNice to meet you, {name}! You can now ask me questions about Microsoft, Apple, or Tesla's finances.")
     print("Type your question below. Type 'exit' when you're done.\n")
@@ -82,4 +83,3 @@ if __name__ == "__main__":
             break
         response = financial_chatbot(user_input)
         print("Bot:", response)
-
